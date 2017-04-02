@@ -121,6 +121,6 @@ public class MainActivity extends AppCompatActivity {
         title = savedInstanceState.getString("title");
         getStringonRestore(title);
 
-        System.out.println(guess + ""+ max + min + checkVisible+startButtonString);
+        System.out.println(guess + "" + max + min + checkVisible + startButtonString);
     }
 }
