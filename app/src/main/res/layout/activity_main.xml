@@ -39,7 +39,7 @@
     <Button
         android:layout_width="150dp"
         android:layout_height="140dp"
-        android:text="Start"
+        android:text="ok?!"
         android:id="@+id/startButton"
         android:background="#7ed36d"
         android:onClick="startButton"

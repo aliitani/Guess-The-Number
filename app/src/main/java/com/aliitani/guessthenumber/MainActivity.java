@@ -11,18 +11,21 @@ public class MainActivity extends AppCompatActivity {
 
     Button startButton, valueButton, higher, lower;
     TextView titleScreen;
-    int max = 1000, min = 1, guess = 500;
-    String title = "Guess a number between 1 to 1000, and I will guess it!";
-    String startButtonString = "START";
+    int max = 1001, min = 1, guess = 500;
+    String title = "Guess a number between 1 to 1000, and I will guess it!", startButtonString = "START";
     boolean checkVisible = false;
 
     public void getStringonRestore(String t) {
         titleScreen = (TextView) findViewById(R.id.TitleScreen);
-        titleScreen.setText(title);
+        if(!title.isEmpty()) {
+            titleScreen.setText(title);
+        }
     }
     public void setStartButtonString(String t) {
         startButton = (Button) findViewById(R.id.startButton);
-        startButton.setText(t);
+        if(!t.isEmpty()) {
+            startButton.setText(t);
+        }
     }
 
     public void checkNumber(View view){
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void startButton(View view){
         startButton = (Button) findViewById(R.id.startButton);
-        if (startButton.getText().toString().equals("Correct")) {
+        if (!startButton.getText().toString().isEmpty() && startButton.getText().toString().equals("Correct")) {
             checkNumber(startButton);
         } else {
             lower = (Button) findViewById(R.id.downButton);
@@ -68,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
             lower.setVisibility(View.VISIBLE);
             higher.setVisibility(View.VISIBLE);
             checkVisible = true;
+            // max is 1001 because i included saveInstanceState and onRestoreInstanceState
             max = 1001;
             min = 1;
             guess = 500;
@@ -105,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         min = savedInstanceState.getInt("min");
         guess = savedInstanceState.getInt("guess");
         checkVisible = savedInstanceState.getBoolean("checkVisible");
-        if (checkVisible == true) {
+        if (checkVisible) {
             higher = (Button) findViewById(R.id.upButton);
             lower = (Button)findViewById(R.id.downButton);
             higher.setVisibility(View.VISIBLE);
